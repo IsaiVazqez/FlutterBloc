@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:loginbloc/api/repositories.dart';
 import 'package:loginbloc/common/controllers/post_controller.dart';
 import 'package:loginbloc/features/second_screen/presentation/widgets/list_item.dart';
 import 'package:loginbloc/widgets/custom_loading.dart';
@@ -17,18 +16,16 @@ class _SecondScreenState extends State<SecondScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Container(
-      child: GetBuilder<PostController>(builder: (controller) {
-        return LoadingOverlay(
-            isLoading: controller.isLoading,
-            child: ListView.builder(
-              itemCount: controller.postsList.length,
-              itemBuilder: (context, index) => PostsListItem(
-                post: controller.postsList[index],
-              ),
-            ));
-      }),
-    ));
+    return Scaffold(body: GetBuilder<PostController>(builder: (controller) {
+      return LoadingOverlay(
+          isLoading: controller.isLoading,
+          child: ListView.builder(
+            itemCount: controller.postsList.length,
+            itemBuilder: (context, index) => PostsListItem(
+              post: controller.postsList[index],
+            ),
+          ));
+    }));
   }
 }
 

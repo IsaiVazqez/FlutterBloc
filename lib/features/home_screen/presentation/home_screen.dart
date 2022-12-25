@@ -5,6 +5,7 @@ import 'package:loginbloc/common/auth/auth.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:loginbloc/features/home_screen/bloc/fetch_bloc.dart';
 import 'package:loginbloc/features/home_screen/presentation/details_screen.dart';
+import 'package:loginbloc/features/home_screen/presentation/views/profile_screen.dart';
 import 'package:loginbloc/features/home_screen/presentation/widgets/card.dart';
 
 class Homescreen extends StatefulWidget {
@@ -182,7 +183,13 @@ class _HomescreenState extends State<Homescreen> {
       Padding(
         padding: const EdgeInsets.only(right: 20, left: 10),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const ProfileScreen(),
+              ),
+            );
+          },
           child: CircleAvatar(
             radius: 17,
             backgroundImage: user.currentUser!.photoURL != null

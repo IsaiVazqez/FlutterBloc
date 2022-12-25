@@ -14,7 +14,7 @@ class PostsProvider {
         onSuccess!(
             (data as List).map((postJson) => Post.fromJson(postJson)).toList());
       },
-      onError: (error) => {if (onError != null) onError(error)},
+      onError: (error) => {if (onError != null) onError(error), print(error)},
     );
   }
 }
